@@ -12,11 +12,11 @@
 
 
 #import "Event.h"
+#import "Block.h"
 
 
 #define GRAY       [UIColor colorWithRed:210/255.0 green:210/255.0 blue:210/255.0 alpha:1]
 #define DARK_GRAY  [UIColor colorWithRed:172/255.0 green:172/255.0 blue:172/255.0 alpha:1]
-
 
 @interface ViewController ()
 @property (nonatomic, strong) NSArray *events;
@@ -47,6 +47,7 @@
     e1.start = [NSDate new];
     e1.end = [NSDate dateWithTimeInterval:60 * 60 sinceDate:[NSDate new]];
     e1.title = @"Civitas Learning Hackathon";
+    e1.location = @"Civitas Learning Center";
     e1.lat = 30.271350;
     e1.lon = -97.758080;
     
@@ -55,6 +56,7 @@
     e2.start = [NSDate dateWithTimeInterval:60 * 60 * 3.5 sinceDate:[NSDate new]];
     e2.end = [NSDate dateWithTimeInterval:60 * 60 * 5 sinceDate:[NSDate new]];
     e2.title = @"Tea with Steve";
+    e2.location = @"Cafe Medici";
     e2.lat = 30.284411;
     e2.lon = -97.742400;
     
@@ -62,6 +64,7 @@
     e3.start = [NSDate dateWithTimeInterval:60 * 60 * 5.5 sinceDate:[NSDate new]];
     e3.end = [NSDate dateWithTimeInterval:60 * 60 * 6.5 sinceDate:[NSDate new]];
     e3.title = @"CS 429: Comp Arch";
+    e3.location = @"Geary Hall";
     e3.lat = 30.287663;
     e3.lon = -97.739246;
     
@@ -84,11 +87,13 @@
             self.view.backgroundColor = circle.backgroundColor;
             [circle removeFromSuperview];
             
-            _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height)];
+            _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height)];
             [self.view addSubview:_scrollView];
             
+            [self insertEvents];
+            
             int i = 0;
-            int size = 110;
+            int size = 90;
             int spacing = 20;
             for (Event *e in _events) {
                 UIView *ev = [[UIView alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height , self.view.frame.size.width - 10*2, size)];
@@ -112,8 +117,7 @@
                     title.font = [UIFont fontWithName:@"RobotoDraft" size:17];
                     [ev addSubview:title];
                     
-                    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-                    [df setDateFormat:@"h:mma"];
+                    NSDateFormatter *df = [[NSDateFormatter alloc] init]; [df setDateFormat:@"h:mma"];
                     UILabel *time = [[UILabel alloc] initWithFrame:CGRectMake(10, 35, ev.frame.size.width - 20, 17)];
                     time.text = [NSString stringWithFormat:@"%@-%@", [df stringFromDate:[self formatDate:e.start]], [df stringFromDate:[self formatDate:e.end]]];
                     time.textColor = [UIColor colorWithWhite:.45 alpha:1];
@@ -123,7 +127,13 @@
                     
 //                    UILabel *dist = [[UILabel alloc] initWithFrame:CGRectMake(ev.frame.size.width - 120, 35, 110, 17)];
                     UILabel *dist = [[UILabel alloc] initWithFrame:CGRectMake(10, 55, 110, 17)];
-                    dist.text = [NSString stringWithFormat:@"%dm away", (int)(sqrt(pow(location.latitude - e.lat, 2) + pow(location.longitude - e.lon, 2)) * 111319)];
+                    if (i == 0) {
+                        NSNumberFormatter *nf = [NSNumberFormatter new]; [nf setNumberStyle:NSNumberFormatterDecimalStyle];
+                        dist.text = [NSString stringWithFormat:@"%@m away", [nf stringFromNumber:[NSNumber numberWithInt:(int)(sqrt(pow(location.latitude - e.lat, 2) + pow(location.longitude - e.lon, 2)) * 111319)]]];
+                    }
+                    else
+                        dist.text = e.location;
+                    
                     dist.textColor = [UIColor colorWithWhite:.65 alpha:0.9f];
                     dist.alpha = 0;
                     dist.font = [UIFont fontWithName:@"RobotoDraft" size:14];
@@ -140,6 +150,26 @@
             }
         }];
     });
+}
+
+- (void)insertEvents {
+    NSMutableArray *blocks = [[NSMutableArray alloc] init];
+    for (int i = 0; i < _events.count - 1; i++) {
+        Event *e1 = _events[i];
+        Event *e2 = _events[i + 1];
+        Block *b = [[Block alloc] init];
+        b.start = e1.end;
+        b.end = e2.start;
+        b.length = [b.end timeIntervalSinceDate:b.start];
+        [blocks addObject:b];
+    }
+    
+    // start adding events
+    BOOL breakfast, lunch, dinner;
+    for (Block *b in blocks) {
+        if (b.length < 20)
+            return;
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
