@@ -156,7 +156,7 @@
                         }];
                     }];
                     
-                    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, MAX(_events.count * (size + spacing) + 10, _scrollView.frame.size.height + 5));
+                    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, MAX(_events.count * (size + spacing) + 30, _scrollView.frame.size.height + 5));
                     i++;
                 }
             }];
@@ -240,6 +240,9 @@
 }
 
 - (NSArray *)getBlocks {
+    [_events sortUsingComparator:^NSComparisonResult(Event *obj1, Event *obj2) {
+        return [obj1.start compare:obj2.start];
+    }];
     NSMutableArray *blocks = [[NSMutableArray alloc] init];
     for (int i = 0; i < _events.count - 1; i++) {
         Event *e1 = _events[i];
@@ -248,7 +251,8 @@
         b.start = e1.end;
         b.end = e2.start;
         b.length = [b.end timeIntervalSinceDate:b.start];
-        [blocks addObject:b];
+        if (b.length > 60 * 30)
+            [blocks addObject:b];
     }
     
     Event *e = [_events lastObject];
