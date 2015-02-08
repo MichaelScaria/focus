@@ -17,7 +17,6 @@
 		9E013FC21A86A28100B532B2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E013FC11A86A28100B532B2 /* MapKit.framework */; };
 		9E107F1F1A86C00E00297FAE /* RobotoDraft-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E107F1D1A86C00E00297FAE /* RobotoDraft-Light.ttf */; };
 		9E107F201A86C00E00297FAE /* RobotoDraft.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E107F1E1A86C00E00297FAE /* RobotoDraft.ttf */; };
-		9E107F231A86CB1400297FAE /* EventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E107F221A86CB1400297FAE /* EventView.m */; };
 		9E107F291A86FEF800297FAE /* Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E107F281A86FEF800297FAE /* Block.m */; };
 /* End PBXBuildFile section */
 
@@ -49,8 +48,6 @@
 		9E013FC11A86A28100B532B2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9E107F1D1A86C00E00297FAE /* RobotoDraft-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoDraft-Light.ttf"; sourceTree = "<group>"; };
 		9E107F1E1A86C00E00297FAE /* RobotoDraft.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoDraft.ttf; sourceTree = "<group>"; };
-		9E107F211A86CB1400297FAE /* EventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventView.h; sourceTree = "<group>"; };
-		9E107F221A86CB1400297FAE /* EventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventView.m; sourceTree = "<group>"; };
 		9E107F271A86FEF800297FAE /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
 		9E107F281A86FEF800297FAE /* Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Block.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,8 +97,6 @@
 				9E013F9D1A86A0DE00B532B2 /* AppDelegate.m */,
 				9E013F9F1A86A0DE00B532B2 /* ViewController.h */,
 				9E013FA01A86A0DE00B532B2 /* ViewController.m */,
-				9E107F211A86CB1400297FAE /* EventView.h */,
-				9E107F221A86CB1400297FAE /* EventView.m */,
 				9E013FBE1A86A25C00B532B2 /* Event.h */,
 				9E013FBF1A86A25C00B532B2 /* Event.m */,
 				9E107F271A86FEF800297FAE /* Block.h */,
@@ -243,7 +238,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E013FC01A86A25C00B532B2 /* Event.m in Sources */,
-				9E107F231A86CB1400297FAE /* EventView.m in Sources */,
 				9E013FA11A86A0DE00B532B2 /* ViewController.m in Sources */,
 				9E107F291A86FEF800297FAE /* Block.m in Sources */,
 				9E013F9E1A86A0DE00B532B2 /* AppDelegate.m in Sources */,

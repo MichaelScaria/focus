@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, EVENT_TYPE) {
+    kEvent,
+    kPadding
+};
+
 @interface Event : NSObject
 
 @property (nonatomic, strong) NSDate *start;
