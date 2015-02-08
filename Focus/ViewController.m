@@ -169,7 +169,23 @@
     for (Block *b in blocks) {
         if (b.length < 20)
             return;
+        NSDateComponents *start = [[NSCalendar currentCalendar] components:NSCalendarUnitHour fromDate:b.start];
+        if (!breakfast && start.hour > 5 && start.hour < 12) {
+        }
+        [self findPlace:@"breakfast"];
     }
+}
+
+- (void)findPlace:(NSString *)query {
+    MKLocalSearchRequest *r = [[MKLocalSearchRequest alloc] init];
+    r.naturalLanguageQuery = query;
+    r.region = MKCoordinateRegionMake(location, MKCoordinateSpanMake(5000/111319.0f, 5000/111319.0f));
+    MKLocalSearch *s = [[MKLocalSearch alloc] initWithRequest:r];
+    [s startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+        for (id item in response.mapItems) {
+            NSLog(@"%@", item);
+        }
+    }];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
