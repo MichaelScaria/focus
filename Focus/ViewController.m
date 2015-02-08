@@ -99,6 +99,7 @@
                 ev.clipsToBounds = NO;
                 ev.layer.shadowOpacity = 0.3;
                 
+                
                 [_scrollView addSubview:ev];
                 
                 [UIView animateWithDuration:.7 delay:i * .1 usingSpringWithDamping:.75 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
@@ -113,16 +114,17 @@
                     
                     NSDateFormatter *df = [[NSDateFormatter alloc] init];
                     [df setDateFormat:@"h:mma"];
-                    UILabel *time = [[UILabel alloc] initWithFrame:CGRectMake(10, 33, ev.frame.size.width - 20, 17)];
+                    UILabel *time = [[UILabel alloc] initWithFrame:CGRectMake(10, 35, ev.frame.size.width - 20, 17)];
                     time.text = [NSString stringWithFormat:@"%@-%@", [df stringFromDate:[self formatDate:e.start]], [df stringFromDate:[self formatDate:e.end]]];
                     time.textColor = [UIColor colorWithWhite:.45 alpha:1];
                     time.alpha = 0;
                     time.font = [UIFont fontWithName:@"RobotoDraft" size:14];
                     [ev addSubview:time];
                     
-                    UILabel *dist = [[UILabel alloc] initWithFrame:CGRectMake(ev.frame.size.width - 70, 33, ev.frame.size.width - 20, 17)];
+//                    UILabel *dist = [[UILabel alloc] initWithFrame:CGRectMake(ev.frame.size.width - 120, 35, 110, 17)];
+                    UILabel *dist = [[UILabel alloc] initWithFrame:CGRectMake(10, 55, 110, 17)];
                     dist.text = [NSString stringWithFormat:@"%dm away", (int)(sqrt(pow(location.latitude - e.lat, 2) + pow(location.longitude - e.lon, 2)) * 111319)];
-                    dist.textColor = [UIColor colorWithWhite:.45 alpha:1];
+                    dist.textColor = [UIColor colorWithWhite:.65 alpha:0.9f];
                     dist.alpha = 0;
                     dist.font = [UIFont fontWithName:@"RobotoDraft" size:14];
                     [ev addSubview:dist];
