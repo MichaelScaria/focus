@@ -97,7 +97,7 @@
             [self insertEvents:^{
                 int i = 0;
                 int size = 90;
-                int offset = 10 + size/2.0;
+                int offset = 10;
                 int spacing = 20;
                 
                 // sort events
@@ -107,7 +107,7 @@
                 
                 for (Event *e in _events) {
                     BOOL isEvent = e.type == kEvent;
-                    UIView *ev = [[UIView alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height , self.view.frame.size.width - 10*2, isEvent ? size : size * 1.5)];
+                    UIView *ev = [[UIView alloc] initWithFrame:isEvent ? CGRectMake(10, self.view.frame.size.height , self.view.frame.size.width - 10*2, size) : CGRectMake(30, self.view.frame.size.height , self.view.frame.size.width - 30*2, size * 1.25)];
                     ev.backgroundColor = [UIColor whiteColor];
                     ev.layer.cornerRadius = 2;
                     ev.layer.shadowOffset = CGSizeMake(0.0f, 7.0f);
@@ -117,7 +117,7 @@
                     [_scrollView addSubview:ev];
                     
                     [UIView animateWithDuration:.7 delay:i * .1 usingSpringWithDamping:.75 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-                        ev.center = CGPointMake(ev.center.x, offset);
+                        ev.frame = (CGRect){ev.frame.origin.x, offset, ev.frame.size};
                     } completion:^(BOOL f) {
                         if (isEvent) {
                             UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, ev.frame.size.width - 20, 22)];
@@ -155,21 +155,30 @@
                             }];
                         }
                         else {
-                            UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, ev.frame.size.width, 26)];
+                            UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, ev.frame.size.width, 50)];
                             int min = [e.end timeIntervalSinceDate:e.start] / 60.0;
                             title.text = [NSString stringWithFormat:@"%dmin", min];
-                            title.textColor = [UIColor colorWithWhite:.3 alpha:1];
+                            title.textColor = [UIColor colorWithWhite:.45 alpha:1];
                             title.alpha = 0;
-                            title.font = [UIFont fontWithName:@"RobotoDraft" size:24];
+                            title.font = [UIFont fontWithName:@"RobotoDraft" size:43];
                             title.textAlignment = NSTextAlignmentCenter;
                             [ev addSubview:title];
+                            
+                            UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, ev.frame.size.width, 19)];
+                            subtitle.text = @"Of free time";
+                            subtitle.textColor = [UIColor colorWithWhite:.6 alpha:0.9f];
+                            subtitle.alpha = 0;
+                            subtitle.font = [UIFont fontWithName:@"RobotoDraft" size:15];
+                            subtitle.textAlignment = NSTextAlignmentCenter;
+                            [ev addSubview:subtitle];
+                            
                             [UIView animateWithDuration:.5 animations:^{
-                                title.alpha = 1;
+                                title.alpha = subtitle.alpha = 1;
                             }];
                         }
                         
                     }];
-                    offset += (isEvent ? size : size * 11.5) + spacing;
+                    offset += ev.frame.size.height + spacing;
                     
                     _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, MAX(_events.count * (size + spacing) + 30, _scrollView.frame.size.height + 5));
                     i++;
