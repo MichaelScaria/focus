@@ -13,6 +13,11 @@
 		9E013FA41A86A0DE00B532B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E013FA21A86A0DE00B532B2 /* Main.storyboard */; };
 		9E013FA61A86A0DE00B532B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E013FA51A86A0DE00B532B2 /* Images.xcassets */; };
 		9E013FB51A86A0DE00B532B2 /* FocusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E013FB41A86A0DE00B532B2 /* FocusTests.m */; };
+		9E013FC01A86A25C00B532B2 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E013FBF1A86A25C00B532B2 /* Event.m */; };
+		9E013FC21A86A28100B532B2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E013FC11A86A28100B532B2 /* MapKit.framework */; };
+		9E107F1F1A86C00E00297FAE /* RobotoDraft-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E107F1D1A86C00E00297FAE /* RobotoDraft-Light.ttf */; };
+		9E107F201A86C00E00297FAE /* RobotoDraft.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E107F1E1A86C00E00297FAE /* RobotoDraft.ttf */; };
+		9E107F231A86CB1400297FAE /* EventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E107F221A86CB1400297FAE /* EventView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +43,13 @@
 		9E013FAE1A86A0DE00B532B2 /* FocusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FocusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E013FB31A86A0DE00B532B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E013FB41A86A0DE00B532B2 /* FocusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FocusTests.m; sourceTree = "<group>"; };
+		9E013FBE1A86A25C00B532B2 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		9E013FBF1A86A25C00B532B2 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		9E013FC11A86A28100B532B2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9E107F1D1A86C00E00297FAE /* RobotoDraft-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoDraft-Light.ttf"; sourceTree = "<group>"; };
+		9E107F1E1A86C00E00297FAE /* RobotoDraft.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoDraft.ttf; sourceTree = "<group>"; };
+		9E107F211A86CB1400297FAE /* EventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventView.h; sourceTree = "<group>"; };
+		9E107F221A86CB1400297FAE /* EventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E013FC21A86A28100B532B2 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 		9E013F8C1A86A0DE00B532B2 = {
 			isa = PBXGroup;
 			children = (
+				9E013FC11A86A28100B532B2 /* MapKit.framework */,
 				9E013F971A86A0DE00B532B2 /* Focus */,
 				9E013FB11A86A0DE00B532B2 /* FocusTests */,
 				9E013F961A86A0DE00B532B2 /* Products */,
@@ -83,6 +97,10 @@
 				9E013F9D1A86A0DE00B532B2 /* AppDelegate.m */,
 				9E013F9F1A86A0DE00B532B2 /* ViewController.h */,
 				9E013FA01A86A0DE00B532B2 /* ViewController.m */,
+				9E107F211A86CB1400297FAE /* EventView.h */,
+				9E107F221A86CB1400297FAE /* EventView.m */,
+				9E013FBE1A86A25C00B532B2 /* Event.h */,
+				9E013FBF1A86A25C00B532B2 /* Event.m */,
 				9E013FA21A86A0DE00B532B2 /* Main.storyboard */,
 				9E013FA51A86A0DE00B532B2 /* Images.xcassets */,
 				9E013F981A86A0DE00B532B2 /* Supporting Files */,
@@ -93,6 +111,8 @@
 		9E013F981A86A0DE00B532B2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9E107F1D1A86C00E00297FAE /* RobotoDraft-Light.ttf */,
+				9E107F1E1A86C00E00297FAE /* RobotoDraft.ttf */,
 				9E013F991A86A0DE00B532B2 /* Info.plist */,
 				9E013F9A1A86A0DE00B532B2 /* main.m */,
 			);
@@ -196,6 +216,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E107F201A86C00E00297FAE /* RobotoDraft.ttf in Resources */,
+				9E107F1F1A86C00E00297FAE /* RobotoDraft-Light.ttf in Resources */,
 				9E013FA41A86A0DE00B532B2 /* Main.storyboard in Resources */,
 				9E013FA61A86A0DE00B532B2 /* Images.xcassets in Resources */,
 			);
@@ -215,6 +237,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E013FC01A86A25C00B532B2 /* Event.m in Sources */,
+				9E107F231A86CB1400297FAE /* EventView.m in Sources */,
 				9E013FA11A86A0DE00B532B2 /* ViewController.m in Sources */,
 				9E013F9E1A86A0DE00B532B2 /* AppDelegate.m in Sources */,
 				9E013F9B1A86A0DE00B532B2 /* main.m in Sources */,
@@ -402,6 +426,7 @@
 				9E013FBA1A86A0DE00B532B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9E013FBB1A86A0DE00B532B2 /* Build configuration list for PBXNativeTarget "FocusTests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +435,7 @@
 				9E013FBD1A86A0DE00B532B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

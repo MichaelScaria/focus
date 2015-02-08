@@ -6,9 +6,16 @@
 //  Copyright (c) 2015 michaelscaria. All rights reserved.
 //
 
+@import CoreLocation;
+
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+    CLLocationCoordinate2D location;
+    
+    UIView *circle;
+}
 
 
 @end
