@@ -39,12 +39,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _events = [[NSMutableArray alloc] init];
-    locationManager = [[CLLocationManager alloc] init];
-    [locationManager requestWhenInUseAuthorization];
-    locationManager.delegate = self;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        locationManager = [[CLLocationManager alloc] init];
+        [locationManager requestWhenInUseAuthorization];
+        locationManager.delegate = self;
+        locationManager.distanceFilter = kCLDistanceFilterNone;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        [locationManager startUpdatingLocation];
+    });
+    
+    
     
     
     Event *e1 = [[Event alloc] init];
@@ -155,7 +160,7 @@
                             }];
                         }
                         else {
-                            UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, ev.frame.size.width, 50)];
+                            UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 21, ev.frame.size.width, 50)];
                             int min = [e.end timeIntervalSinceDate:e.start] / 60.0;
                             title.text = [NSString stringWithFormat:@"%dmin", min];
                             title.textColor = [UIColor colorWithWhite:.45 alpha:1];
@@ -180,7 +185,7 @@
                     }];
                     offset += ev.frame.size.height + spacing;
                     
-                    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, MAX(_events.count * (size + spacing) + 30, _scrollView.frame.size.height + 5));
+                    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, MAX(offset + 30, _scrollView.frame.size.height + 5));
                     i++;
                 }
             }];
