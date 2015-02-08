@@ -21,5 +21,5 @@ typedef NS_ENUM(NSUInteger, EVENT_TYPE) {
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, assign) float lat;
 @property (nonatomic, assign) float lon;
-
+@property (nonatomic, assign) EVENT_TYPE type;
 @end
