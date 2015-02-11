@@ -14,6 +14,8 @@
 #import "Event.h"
 #import "Block.h"
 
+#import "TouchView.h"
+
 
 #define GRAY       [UIColor colorWithRed:210/255.0 green:210/255.0 blue:210/255.0 alpha:1]
 #define DARK_GRAY  [UIColor colorWithRed:172/255.0 green:172/255.0 blue:172/255.0 alpha:1]
@@ -112,7 +114,7 @@
                 
                 for (Event *e in _events) {
                     BOOL isEvent = e.type == kEvent;
-                    UIView *ev = [[UIView alloc] initWithFrame:isEvent ? CGRectMake(10, self.view.frame.size.height , self.view.frame.size.width - 10*2, size) : CGRectMake(30, self.view.frame.size.height , self.view.frame.size.width - 30*2, size * 1.25)];
+                    TouchView *ev = [[TouchView alloc] initWithFrame:isEvent ? CGRectMake(10, self.view.frame.size.height , self.view.frame.size.width - 10*2, size) : CGRectMake(30, self.view.frame.size.height , self.view.frame.size.width - 30*2, size * 1.25)];
                     ev.backgroundColor = [UIColor whiteColor];
                     ev.layer.cornerRadius = 2;
                     ev.layer.shadowOffset = CGSizeMake(0.0f, 7.0f);
